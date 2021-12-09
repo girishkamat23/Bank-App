@@ -1,0 +1,46 @@
+{
+  "results": {
+    "users": [
+      {
+        "username": "moiezshaikh18",
+        "password": "moiez18",
+        "firstname": "Moiez",
+        "lastname": "Moiez",
+        "ac_type": "Savings",
+        "ac_no": "79654125425412",
+        "branch": "MG Road",
+        "balance": 100000
+      },
+      {
+        "username": "moiezshaikh18",
+        "password": "moiez18",
+        "firstname": "Moiez",
+        "lastname": "Moiez",
+        "ac_type": "Savings",
+        "ac_no": "79654125425412",
+        "branch": "MG Road",
+        "balance": 100000
+      },
+      {
+        "username": "moiezshaikh18",
+        "password": "moiez18",
+        "firstname": "Moiez",
+        "lastname": "Moiez",
+        "ac_type": "Savings",
+        "ac_no": "79654125425412",
+        "branch": "MG Road",
+        "balance": 100000
+      },
+      {
+        "username": "moiezshaikh18",
+        "password": "moiez18",
+        "firstname": "Moiez",
+        "lastname": "Moiez",
+        "ac_type": "Savings",
+        "ac_no": "79654125425412",
+        "branch": "MG Road",
+        "balance": 100000
+      }
+    ]
+  }
+}

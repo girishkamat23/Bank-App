@@ -4,13 +4,13 @@ const initialState = {
   amount: 0,
   minBal: 1000,
   error: null,
+  textValue: '',
   input: null,
 };
 
 // Reducer is a Pure function- Output depends on input only
 // action eg: {type: 'DEPOSIT', payload: 1000}
 const appReducer = (state = initialState, action) => {
-  console.log(action);
   switch (action.type) {
     case constants.DEPOSIT: {
       let newState = { ...state };
@@ -27,9 +27,16 @@ const appReducer = (state = initialState, action) => {
       }
       return newState;
     }
+
     case constants.SET_ERROR: {
       let newState = { ...state };
       newState.error = action.payload;
+      return newState;
+    }
+
+    case constants.SET_TEXT: {
+      let newState = { ...state };
+      newState.textValue = action.payload;
       return newState;
     }
 

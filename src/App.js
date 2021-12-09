@@ -3,6 +3,7 @@ import Transaction from './components/Transaction';
 import './App.css';
 import { connect } from 'react-redux';
 import {
+  setText,
   setError,
   clearInput,
   depositAmount,
@@ -36,21 +37,26 @@ class BankApp extends React.Component {
     error: null,
   };
 
+  componentDidMount() {
+    fetch('/userData.json')
+      .then((response) => response.json())
+      .then((data) => console.log(data?.results?.users));
+  }
+
   handleOnChange = (e) => {
     let textInput = e.target.value !== '' ? +e.target.value : '';
-    this.setState({ textValue: textInput });
+    // this.setState({ textValue: textInput });
+    this.props.setText(textInput);
     if (this.props.error !== null) {
       this.props.setError(null);
     }
   };
 
   depositOnClick = () => {
-    if (this.state.textValue !== '') {
+    if (this.props.textValue !== '') {
       this.props.setError(null);
-      this.props.deposit(this.state.textValue);
-      this.setState({ textValue: '' }, () => {
-        console.log(this.state);
-      });
+      this.props.deposit(this.props.textValue);
+      this.props.setText('');
     } else {
       this.props.setError('Enter valid amount');
     }
@@ -66,12 +72,10 @@ class BankApp extends React.Component {
   };
 
   withdrawOnClick = () => {
-    if (this.state.textValue !== '') {
+    if (this.props.textValue !== '') {
       this.props.setError(null);
-      this.props.withdraw(this.state.textValue);
-      this.setState({ textValue: '' }, () => {
-        console.log(this.state);
-      });
+      this.props.withdraw(this.props.textValue);
+      this.props.setText('');
     }
     /* let accounts = [...this.state.accounts];
     let index = accounts.findIndex((account) => account.acc_no === 1);
@@ -94,7 +98,7 @@ class BankApp extends React.Component {
         <Transaction
           // accountNum={this.state.handleOnAccNum}
           // balance={this.state.accounts[0].amount}
-          value={this.state.textValue}
+          value={this.props.textValue}
           balance={this.props.amount}
           change={this.handleOnChange}
           deposit={this.depositOnClick}
@@ -109,6 +113,7 @@ class BankApp extends React.Component {
 const mapStateToProps = (state) => ({
   amount: state.amount,
   error: state.error,
+  textValue: state.textValue,
 });
 
 //Mapping dispatch function to props
@@ -116,6 +121,7 @@ const mapDispatchToProps = (dispatch) => ({
   deposit: (amt) => dispatch(depositAmount(amt)),
   withdraw: (amt) => dispatch(withdrawAmount(amt)),
   setError: (error) => dispatch(setError(error)),
+  setText: (text) => dispatch(setText(text)),
   clearInput: () => dispatch(clearInput()),
 });
 

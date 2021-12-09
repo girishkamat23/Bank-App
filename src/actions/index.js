@@ -15,6 +15,11 @@ export const setError = (errorValue) => ({
   payload: errorValue,
 });
 
+export const setText = (textValue) => ({
+  type: constants.SET_TEXT,
+  payload: textValue,
+});
+
 export const clearInput = (setInput) => ({
   type: constants.CLEAR_INPUT,
 });
