@@ -1,4 +1,5 @@
-import constants from '../constants';
+/* import constants from '../constants'; */
+import * as actions from '../constants';
 
 const initialState = {
   amount: 0,
@@ -12,13 +13,13 @@ const initialState = {
 // action eg: {type: 'DEPOSIT', payload: 1000}
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case constants.DEPOSIT: {
+    case actions.DEPOSIT: {
       let newState = { ...state };
       newState.amount += action.payload;
       return newState;
     }
 
-    case constants.WITHDRAW: {
+    case actions.WITHDRAW: {
       let newState = { ...state };
       if (newState.amount - action.payload >= newState.minBal) {
         newState.amount -= action.payload;
@@ -28,19 +29,19 @@ const appReducer = (state = initialState, action) => {
       return newState;
     }
 
-    case constants.SET_ERROR: {
+    case actions.SET_ERROR: {
       let newState = { ...state };
       newState.error = action.payload;
       return newState;
     }
 
-    case constants.SET_TEXT: {
+    case actions.SET_TEXT: {
       let newState = { ...state };
       newState.textValue = action.payload;
       return newState;
     }
 
-    case constants.CLEAR_INPUT: {
+    case actions.CLEAR_INPUT: {
       let newState = { ...state };
       newState.input = null;
       return newState;
